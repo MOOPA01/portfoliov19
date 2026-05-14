@@ -39,24 +39,9 @@ Hi! My name is Seonyoo Pak
 
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-    <a href="{{site.baseurl}}/code/javascript" style="text-decoration: none;">
-        <div style="background-color: var(--green); color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
-           JS Basics
-        </div>
-    </a>
-    <a href="{{site.baseurl}}/game/essentials/variables" style="text-decoration: none;">
-        <div style="background-color: var(--blue); color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
-           JS Variables
-        </div>
-    </a>
-    <a href="{{site.baseurl}}/gamerunner" style="text-decoration: none;">
-        <div style="background-color: var(--warn); color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
-           Gamerunner
-        </div>
-    </a>
-    <a href="{{site.baseurl}}/network/stack" style="text-decoration: none;">
-        <div style="background-color: var(--orange); color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s;">
-           Networking
+    <a href="{{site.baseurl}}/homework" style="text-decoration: none;">
+        <div style="background-color: #ea6882; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Homework Summation
         </div>
     </a>
 </div>
