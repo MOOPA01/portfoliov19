@@ -44,6 +44,36 @@ Hi! My name is Seonyoo Pak
             Homework Summation
         </div>
     </a>
+    <a href="{{site.baseurl}}/js/oop-inheritance" style="text-decoration: none;">
+        <div style="background-color: #a78bfa; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            OOP & Inheritance
+        </div>
+    </a>
+    <a href="{{site.baseurl}}/js/operators" style="text-decoration: none;">
+        <div style="background-color: #34d399; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Operators
+        </div>
+    </a>
+    <a href="{{site.baseurl}}/js/input-output" style="text-decoration: none;">
+        <div style="background-color: #60a5fa; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Input & Output
+        </div>
+    </a>
+    <a href="{{site.baseurl}}/js/api-async" style="text-decoration: none;">
+        <div style="background-color: #fbbf24; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            API & Async
+        </div>
+    </a>
+    <a href="{{site.baseurl}}/js/debugging" style="text-decoration: none;">
+        <div style="background-color: #f87171; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Debugging
+        </div>
+    </a>
+    <a href="{{site.baseurl}}/js/testing" style="text-decoration: none;">
+        <div style="background-color: #2dd4bf; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Testing & Docs
+        </div>
+    </a>
 </div>
 
 <br>
