@@ -8,7 +8,7 @@ permalink: /io
 
 | Back | Index | Next |
 | ------- | ------ | ------ |
-| [Operators](https://moopa01.opencodingsociety.com/operators) | [Index](https://moopa01.opencodingsociety.com/) | [Debugging](https://moopa01.opencodingsociety.com/debug) |
+| [Operators](https://moopa01.opencodingsociety.com/operators) | [Index](https://moopa01.opencodingsociety.com/) | [Documentation](https://moopa01.opencodingsociety.com/doc) |
 
 
 ---
