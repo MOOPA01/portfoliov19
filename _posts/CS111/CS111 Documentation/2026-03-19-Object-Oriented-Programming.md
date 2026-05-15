@@ -13,7 +13,7 @@ permalink: /OOP
 ---
 
 
-<div id="oop-app" style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 650px; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd;">
+<div id="oop-app" style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 650px; background: #222222; padding: 20px; border-radius: 8px; border: 1px solid #ddd;">
   <h2 style="margin-top: 0; color: #333;">Object-Oriented Programming</h2>
   <p style="color: #666;">Click a concept to expand details.</p>
 
@@ -76,8 +76,8 @@ oopConcepts.forEach((concept, index) => {
     padding: 15px;
     border: 1px solid #cc6516;
     border-top: none;
-    background: #ffffff;
-    color: #222222;
+    background: #222222;
+    color: #ffffff;
     font-size: 14px;
     line-height: 1.5;
     border-bottom-left-radius: 4px;
