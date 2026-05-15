@@ -149,7 +149,7 @@ Loops run code multiple times, so you don't repeat yourself.
 
 ---
 
-### ❓ Conditions — *Decide*
+### Conditions — *Decide*
 `if / else` lets code react to what's actually happening.
 
 ```js
@@ -162,7 +162,7 @@ else                   { continue(); }
 
 ---
 
-### 🪆 Nested Conditions — *Refine*
+### Nested Conditions — *Refine*
 Conditions inside conditions handle layered, real-world logic.
 
 ```js
