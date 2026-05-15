@@ -21,7 +21,12 @@ You can play the game here:
 <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
     <a href="https://nexus.opencodingsociety.com/gamify/heist" style="text-decoration: none;">
         <div style="background-color: #1d824a; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
-            H.E.I.S.T. EXE
+            H.E.I.S.T. EXE (Original)
+        </div>
+    </a>
+    <a href="https://pages.opencodingsociety.com/heist-exe" style="text-decoration: none;">
+        <div style="background-color: #1d824a; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            H.E.I.S.T. EXE (Gamified)
         </div>
     </a>
 </div>
@@ -36,9 +41,9 @@ You can view documentation of our lesson here:
     </a>
 </div>
 
-<div style="font-family: Times New Roman; max-width: 700px; margin: 0 auto;">
+<div style="font-family: Ariel; max-width: 700px; margin: 0 auto;">
   <h2 style="margin-bottom: 10px;"> Class Overview</h2>
-  <p style="margin-top: 0;">here is a breakdown of how each object fits into the engine's class hierarchy.</p>
+  <p style="margin-top: 0;">Here is a breakdown of how each object fits into the engine's class hierarchy:</p>
 
   <table style="width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 16px;">
     <thead>
