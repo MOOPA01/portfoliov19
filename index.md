@@ -67,10 +67,10 @@ Hi! My name is Seonyoo Pak
             Documentation
         </div>
     </a>
-    <a href="{{site.baseurl}}/js/debug" style="text-decoration: none;">
-        <div style="background-color: #ced42d; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
-            Debugging
-        </div>
+    <a href="{{site.baseurl}}/debug" style="text-decoration: none;">
+    <div style="background-color: #ced42d; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+        Debugging
+    </div>
     </a>
     <a href="{{site.baseurl}}/js/testing" style="text-decoration: none;">
         <div style="background-color: #1654e4; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
