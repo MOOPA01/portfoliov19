@@ -8,7 +8,7 @@ permalink: /testVerify
 
 | Back | Index | Next |
 | ------- | ------ | ------ |
-| [Debugging](https://moopa01.opencodingsociety.com/debug/) | [Index](https://moopa01.opencodingsociety.com) | [OOP](https://moopa01.opencodingsociety.com/OOP/) |
+| [Debugging](https://moopa01.opencodingsociety.com/debug) | [Index](https://moopa01.opencodingsociety.com) | [OOP](https://moopa01.opencodingsociety.com/OOP) |
 
 
 ---

@@ -8,7 +8,7 @@ permalink: /controlStructures
 
 | Back | Index | Next |
 | ------- | ------ | ------ |
-| [OOP](https://moopa01.opencodingsociety.com/OOP/) | [Index](https://moopa01.opencodingsociety.com/) | [Data Types](https://moopa01.opencodingsociety.com/data/) |
+| [OOP](https://moopa01.opencodingsociety.com/OOP) | [Index](https://moopa01.opencodingsociety.com/) | [Data Types](https://moopa01.opencodingsociety.com/data) |
 
 
 ---

@@ -8,7 +8,7 @@ permalink: /doc
 
 | Back | Index | Next |
 | ------- | ------ | ------ |
-| [Input/Output](https://moopa01.opencodingsociety.com/io/) | [Index](https://moopa01.opencodingsociety.com/) | [Debugging](https://moopa01.opencodingsociety.com/debug/) |
+| [Input/Output](https://moopa01.opencodingsociety.com/io) | [Index](https://moopa01.opencodingsociety.com/) | [Debugging](https://moopa01.opencodingsociety.com/debug) |
 
 
 ---

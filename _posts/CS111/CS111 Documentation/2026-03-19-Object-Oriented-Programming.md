@@ -8,7 +8,7 @@ permalink: /OOP
 
 | Back | Index | Next |
 | ------- | ------ | ------ |
-| [Testing & Verification](https://moopa01.opencodingsociety.com/testVerify/) | [Index](https://moopa01.opencodingsociety.com/) | [Control Structures](https://moopa01.opencodingsociety.com/controlStructures/) |
+| [Testing & Verification](https://moopa01.opencodingsociety.com/testVerify) | [Index](https://moopa01.opencodingsociety.com/) | [Control Structures](https://moopa01.opencodingsociety.com/controlStructures) |
 
 ---
 
