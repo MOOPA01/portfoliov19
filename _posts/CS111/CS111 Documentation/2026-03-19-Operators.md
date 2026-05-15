@@ -1,10 +1,10 @@
-  ---
-  layout: post
-  codemirror: true
-  title: Operators
-  description: Operators - CS111 Review
-  permalink: /operators
-  ---
+---
+layout: post
+codemirror: true
+title: Operators
+description: Operators - CS111 Review
+permalink: /operators
+---
 
   | Back | Index | Next |
   | ------- | ------ | ------ |
