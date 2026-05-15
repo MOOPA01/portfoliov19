@@ -26,20 +26,24 @@ permalink: /OOP
 // ----------------------
 const oopConcepts = [
   {
-    name: "Encapsulation",
-    description: "Bundles data (properties) and methods (logic) into one unit. It hides internal state to protect data from outside interference."
+    name: "Writing Classes",
+    description: "A class is a blueprint or template used to create objects. It defines the initial state (properties like health or position) and the behaviors (methods like move or attack) that all objects created from that blueprint will have. It allows you to organize your code into logical, reusable structures."
   },
   {
-    name: "Inheritance",
-    description: "Allows a 'child' class to reuse code from a 'parent' class. It creates a hierarchy and eliminates redundant code."
+    name: "Methods & Parameters",
+    description: "Methods are functions that live inside a class and represent the actions an object can take. Parameters are the placeholders that allow you to pass specific information into those methods. For example, a jump(height) method uses the height parameter to determine exactly how high that specific jump should be."
   },
   {
-    name: "Polymorphism",
-    description: "The ability for different classes to be treated as instances of the same general class through the same interface (e.g., overriding methods)."
+    name: "Instantiation & Objects",
+    description: "Instantiation is the act of creating a living "copy" of a class in your game’s memory. While the class is just the blueprint, the Object is the actual house built from it. You can instantiate five different "Enemy" objects from one "Enemy" class, and each can have its own unique health and position during gameplay."
   },
   {
-    name: "Abstraction",
-    description: "Hiding complex background details and only showing the essential features of an object to the user."
+    name: "Method Overriding",
+    description: "This occurs when a Child class provides a specific implementation of a method that is already defined in its Parent class. For example, if the Parent Enemy has a generic attack() method, the Child Boss can "override" it to perform a much more powerful special attack instead of the default one."
+  },
+  {
+    name: "Constructor Chaining",
+    description: "The constructor is a special method that runs automatically when an object is created. Chaining involves using the super() keyword to ensure that the Parent’s constructor runs before the Child’s constructor logic. This ensures the object is properly set up with all basic "Parent" traits before the "Child" adds its unique features."
   }
 ];
 
