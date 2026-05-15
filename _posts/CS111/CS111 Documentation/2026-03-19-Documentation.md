@@ -13,24 +13,6 @@ permalink: /doc
 
 ---
 
-<!-- This is my main overview for the H.E.I.S.T. EXE game.
-
-
-You can play the game here:
-
-<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
-    <a href="https://nexus.opencodingsociety.com/gamify/heist" style="text-decoration: none;">
-        <div style="background-color: #1d824a; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
-            H.E.I.S.T. EXE (Original)
-        </div>
-    </a>
-    <a href="https://pages.opencodingsociety.com/heist-exe" style="text-decoration: none;">
-        <div style="background-color: #1d824a; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
-            H.E.I.S.T. EXE (Gamified)
-        </div>
-    </a>
-</div> -->
-
 You can view documentation of our lesson here:
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
