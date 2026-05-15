@@ -62,17 +62,12 @@ Hi! My name is Seonyoo Pak
             Input/Output
         </div>
     </a>
-    <a href="{{site.baseurl}}/doc" style="text-decoration: none;">
-        <div style="background-color: #f87171; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
-            Documentation
-        </div>
-    </a>
     <a href="{{site.baseurl}}/debug" style="text-decoration: none;">
     <div style="background-color: #ced42d; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
         Debugging
     </div>
     </a>
-    <a href="{{site.baseurl}}/js/testing" style="text-decoration: none;">
+    <a href="{{site.baseurl}}/testing" style="text-decoration: none;">
         <div style="background-color: #1654e4; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
             Testing & Verification
         </div>
