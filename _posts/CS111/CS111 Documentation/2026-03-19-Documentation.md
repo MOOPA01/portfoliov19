@@ -13,7 +13,7 @@ permalink: /doc
 
 ---
 
-This is my main overview for the H.E.I.S.T. EXE game.
+<!-- This is my main overview for the H.E.I.S.T. EXE game.
 
 
 You can play the game here:
@@ -29,7 +29,7 @@ You can play the game here:
             H.E.I.S.T. EXE (Gamified)
         </div>
     </a>
-</div>
+</div> -->
 
 You can view documentation of our lesson here:
 
