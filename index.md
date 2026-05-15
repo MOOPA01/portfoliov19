@@ -33,45 +33,48 @@ Hi! My name is Seonyoo Pak
 
 <br>
 
-### My Lessons
+### CS 111
 
-> Foundations in Tech are essential, click to see some of my lesson creations.
-
-
+> Here is everything I learned this class, all organized by topic for CS 111, click to see these in the browser
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-    <a href="{{site.baseurl}}/homework" style="text-decoration: none;">
+    <a href="{{site.baseurl}}/OOP" style="text-decoration: none;">
         <div style="background-color: #ea6882; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
-            Homework Summation
+            Object Oriented Programming
         </div>
     </a>
-    <a href="{{site.baseurl}}/js/oop-inheritance" style="text-decoration: none;">
+    <a href="{{site.baseurl}}/controlStructures" style="text-decoration: none;">
         <div style="background-color: #a78bfa; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
-            OOP & Inheritance
+            Control Structures
         </div>
     </a>
-    <a href="{{site.baseurl}}/js/operators" style="text-decoration: none;">
+    <a href="{{site.baseurl}}/data" style="text-decoration: none;">
         <div style="background-color: #34d399; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Data Types
+        </div>
+    </a>
+    <a href="{{site.baseurl}}/operators" style="text-decoration: none;">
+        <div style="background-color: #60a5fa; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
             Operators
         </div>
     </a>
-    <a href="{{site.baseurl}}/js/input-output" style="text-decoration: none;">
-        <div style="background-color: #60a5fa; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
-            Input & Output
-        </div>
-    </a>
-    <a href="{{site.baseurl}}/js/api-async" style="text-decoration: none;">
+    <a href="{{site.baseurl}}/io" style="text-decoration: none;">
         <div style="background-color: #fbbf24; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
-            API & Async
+            Input/Output
         </div>
     </a>
-    <a href="{{site.baseurl}}/js/debugging" style="text-decoration: none;">
+    <a href="{{site.baseurl}}/doc" style="text-decoration: none;">
         <div style="background-color: #f87171; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Documentation
+        </div>
+    </a>
+    <a href="{{site.baseurl}}/js/testing" style="text-decoration: none;">
+        <div style="background-color: #ced42d; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
             Debugging
         </div>
     </a>
     <a href="{{site.baseurl}}/js/testing" style="text-decoration: none;">
-        <div style="background-color: #2dd4bf; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
-            Testing & Docs
+        <div style="background-color: #1654e4; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Testing & Verification
         </div>
     </a>
 </div>
