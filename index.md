@@ -77,6 +77,11 @@ Hi! My name is Seonyoo Pak
             Testing & Verification
         </div>
     </a>
+        <a href="{{site.baseurl}}/summary" style="text-decoration: none;">
+        <div style="background-color: #563277; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Summary
+        </div>
+    </a>
 </div>
 
 <br>
