@@ -14,36 +14,36 @@ permalink: /OOP
 
 
 <div id="oop-app" style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 650px; background: #222222; padding: 20px; border-radius: 8px; border: 1px solid #ddd;">
-  <h2 style="margin-top: 0; color: #333;">Object-Oriented Programming</h2>
-  <p style="color: #666;">Click a concept to expand details.</p>
+  <h2 style="margin-top: 0; color: #ffffff;">Object-Oriented Programming</h2>
+  <p style="color: #aaaaaa;">Click a concept to expand details.</p>
 
   <div id="oop-list"></div>
 </div>
 
 <script>
 // ----------------------
-// SHORTENED OOP DATA
+// SHORTENED OOP DATA (Fixed inner quotes using template literals)
 // ----------------------
 const oopConcepts = [
   {
     name: "Writing Classes",
-    description: "A class is a blueprint or template used to create objects. It defines the initial state (properties like health or position) and the behaviors (methods like move or attack) that all objects created from that blueprint will have. It allows you to organize your code into logical, reusable structures."
+    description: `A class is a blueprint or template used to create objects. It defines the initial state (properties like health or position) and the behaviors (methods like move or attack) that all objects created from that blueprint will have. It allows you to organize your code into logical, reusable structures.`
   },
   {
     name: "Methods & Parameters",
-    description: "Methods are functions that live inside a class and represent the actions an object can take. Parameters are the placeholders that allow you to pass specific information into those methods. For example, a jump(height) method uses the height parameter to determine exactly how high that specific jump should be."
+    description: `Methods are functions that live inside a class and represent the actions an object can take. Parameters are the placeholders that allow you to pass specific information into those methods. For example, a jump(height) method uses the height parameter to determine exactly how high that specific jump should be.`
   },
   {
     name: "Instantiation & Objects",
-    description: "Instantiation is the act of creating a living "copy" of a class in your game’s memory. While the class is just the blueprint, the Object is the actual house built from it. You can instantiate five different "Enemy" objects from one "Enemy" class, and each can have its own unique health and position during gameplay."
+    description: `Instantiation is the act of creating a living "copy" of a class in your game’s memory. While the class is just the blueprint, the Object is the actual house built from it. You can instantiate five different "Enemy" objects from one "Enemy" class, and each can have its own unique health and position during gameplay.`
   },
   {
     name: "Method Overriding",
-    description: "This occurs when a Child class provides a specific implementation of a method that is already defined in its Parent class. For example, if the Parent Enemy has a generic attack() method, the Child Boss can "override" it to perform a much more powerful special attack instead of the default one."
+    description: `This occurs when a Child class provides a specific implementation of a method that is already defined in its Parent class. For example, if the Parent Enemy has a generic attack() method, the Child Boss can "override" it to perform a much more powerful special attack instead of the default one.`
   },
   {
     name: "Constructor Chaining",
-    description: "The constructor is a special method that runs automatically when an object is created. Chaining involves using the super() keyword to ensure that the Parent’s constructor runs before the Child’s constructor logic. This ensures the object is properly set up with all basic "Parent" traits before the "Child" adds its unique features."
+    description: `The constructor is a special method that runs automatically when an object is created. Chaining involves using the super() keyword to ensure that the Parent’s constructor runs before the Child’s constructor logic. This ensures the object is properly set up with all basic "Parent" traits before the "Child" adds its unique features.`
   }
 ];
 
@@ -188,5 +188,3 @@ update() {
 | Inheritance | `extends` | Reusable parent logic |
 | Polymorphism | method override | Custom behavior per class |
 | Abstraction | `super()` | Simplified interface to complex logic |
-
-> **Pattern to remember:** call `super()` first to keep parent behavior, then add your own. Extend — don't replace.
