@@ -13,29 +13,32 @@ permalink: /doc
 
 ---
 
-This is my main overview for the PirateMegaGame. It has examples of what I used for certain topics that align with CS 111 Requirements:
-
-You can reference the code here: 
-- We will keep making edits to the code, so the code you see on the files below may not be updated. If you would like to see if we have made any changes to our code, please go to our issues!
-
-| Level 1 | Level 2 | Level 3 | Issues/Documentation |
-| ------- | ------ | ------ | ------ |
-| [View!](https://github.com/aashihegu1-stack/SAR/blob/main/assets/js/GameEnginev1.1/GameLevelPirateHunt.js) | [View!](https://github.com/aashihegu1-stack/SAR/blob/main/assets/js/GameEnginev1.1/GameLevelPirateMegaGame2.js) | [View!](https://github.com/aashihegu1-stack/SAR/blob/main/assets/js/GameEnginev1.1/GameLevelPirateBoss.js) | [View!](https://github.com/aashihegu1-stack/SAR/issues/4) | 
+This is my main overview for the H.E.I.S.T. EXE game.
 
 
-And you can play the game here:
+You can play the game here:
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
-    <a href="https://aashihegu1-stack.github.io/SAR/gamify/PirateMegaGame" style="text-decoration: none;">
-        <div style="background-color: #ff002f; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
-            Play
+    <a href="https://nexus.opencodingsociety.com/gamify/heist" style="text-decoration: none;">
+        <div style="background-color: #1d824a; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            H.E.I.S.T. EXE
         </div>
     </a>
 </div>
 
-<div style="font-family: Arial; max-width: 700px; margin: 0 auto;">
-  <h2 style="margin-bottom: 10px;">☠️🦜 Game Object Class Overview</h2>
-  <p style="margin-top: 0;">A clean breakdown of how each object fits into the engine's class hierarchy.</p>
+You can view documentation of our lesson here:
+
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+    <a href="https://pages.opencodingsociety.com/local-storage" style="text-decoration: none;">
+        <div style="background-color: #1d824a; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Local Storage Documentation
+        </div>
+    </a>
+</div>
+
+<div style="font-family: Times New Roman; max-width: 700px; margin: 0 auto;">
+  <h2 style="margin-bottom: 10px;"> Class Overview</h2>
+  <p style="margin-top: 0;">here is a breakdown of how each object fits into the engine's class hierarchy.</p>
 
   <table style="width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 16px;">
     <thead>
@@ -47,22 +50,17 @@ And you can play the game here:
     </thead>
     <tbody>
       <tr>
-        <td style="padding: 10px; border: 1px solid #ff0051;"><strong>McArchie</strong></td>
+        <td style="padding: 10px; border: 1px solid #ff0051;"><strong>Player</strong></td>
         <td style="padding: 10px; border: 1px solid #ff0051;"><code>Player extends Character</code></td>
         <td style="padding: 10px; border: 1px solid #ff0051;">Player-controlled character</td>
       </tr>
       <tr>
-        <td style="padding: 10px; border: 1px solid #ff0051;"><strong>Pirate</strong></td>
-        <td style="padding: 10px; border: 1px solid #ff0051;"><code>Pirate extends Character</code></td>
+        <td style="padding: 10px; border: 1px solid #ff0051;"><strong>Guard</strong></td>
+        <td style="padding: 10px; border: 1px solid #ff0051;"><code>Guard extends Character</code></td>
         <td style="padding: 10px; border: 1px solid #ff0051;">"Enemy" NPC with reaction logic</td>
       </tr>
       <tr>
-        <td style="padding: 10px; border: 1px solid #ff0051;"><strong>Map</strong></td>
-        <td style="padding: 10px; border: 1px solid #ff0051;"><code>Background extends GameObject</code></td>
-        <td style="padding: 10px; border: 1px solid #ff0051;">Layered scrolling environment</td>
-      </tr>
-      <tr>
-        <td style="padding: 10px; border: 1px solid #ff0051;"><strong>Shields</strong></td>
+        <td style="padding: 10px; border: 1px solid #ff0051;"><strong>Barrier</strong></td>
         <td style="padding: 10px; border: 1px solid #ff0051;"><code>Barrier extends GameObject</code></td>
         <td style="padding: 10px; border: 1px solid #ff0051;">Collision boundaries</td>
       </tr>
@@ -73,7 +71,7 @@ And you can play the game here:
 
 <div id="cs111-app" style="font-family: Arial; max-width: 900px; color: #e6e6e6; margin: 0 auto;">
 
-  <h2 style="margin-bottom: 10px; color: #fff;">🎓 CS111 Requirements — Interactive Map</h2>
+  <h2 style="margin-bottom: 10px; color: #fff;"> CS111 Requirements</h2>
   <p style="margin-top: 0; color: #bbb;">Click any section to expand and learn more.</p>
 
   <style>
@@ -129,7 +127,7 @@ And you can play the game here:
   <!-- OOP / CLASSES -->
   <div class="section">
     <div class="section-header" onclick="toggleSection('oop')">
-      🧬 Object-Oriented Programming
+      Object-Oriented Programming
       <span>▼</span>
     </div>
     <div class="section-content" id="oop">
@@ -143,7 +141,7 @@ And you can play the game here:
   <!-- CONTROL STRUCTURES -->
   <div class="section">
     <div class="section-header" onclick="toggleSection('control')">
-      🔁 Control Structures
+      Control Structures
       <span>▼</span>
     </div>
     <div class="section-content" id="control">
@@ -156,7 +154,7 @@ And you can play the game here:
   <!-- DATA TYPES -->
   <div class="section">
     <div class="section-header" onclick="toggleSection('datatypes')">
-      🔢 Data Types
+      Data Types
       <span>▼</span>
     </div>
     <div class="section-content" id="datatypes">
@@ -171,7 +169,7 @@ And you can play the game here:
   <!-- OPERATORS -->
   <div class="section">
     <div class="section-header" onclick="toggleSection('operators')">
-      ➗ Operators
+      Operators
       <span>▼</span>
     </div>
     <div class="section-content" id="operators">
@@ -184,7 +182,7 @@ And you can play the game here:
   <!-- INPUT / OUTPUT -->
   <div class="section">
     <div class="section-header" onclick="toggleSection('io')">
-      🎨 Input / Output
+      Input / Output
       <span>▼</span>
     </div>
     <div class="section-content" id="io">
@@ -197,7 +195,7 @@ And you can play the game here:
   <!-- SOFTWARE PRACTICES -->
   <div class="section">
     <div class="section-header" onclick="toggleSection('practices')">
-      🧪 Software Engineering Practices
+      Software Engineering Practices
       <span>▼</span>
     </div>
     <div class="section-content" id="practices">

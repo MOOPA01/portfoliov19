@@ -81,22 +81,16 @@ dataTypes.forEach((item, index) => {
 
   // Content Box (Fixed visibility)
   const details = document.createElement("div");
-  details.style.cssText = `
-    display: none;
-    padding: 15px;
-    border: 1px solid #333;
-    border-top: none;
-    background: #222222;
-    color: #dddddd;
-    font-size: 14px;
-    line-height: 1.5;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-  `;
-  
+  details.style.display = "none";
+  details.style.padding = "10px";
+  details.style.border = "1px solid #ddd";
+  details.style.borderTop = "none";
+  details.style.background = "#fff";
+  details.style.lineHeight = "1.6";
+
   details.innerHTML = `
-    <p style="margin: 0 0 5px 0;"><strong style="color: #f700ff;">Example:</strong> <code style="background: #333; color: #fff; padding: 2px 4px; border-radius: 3px;">${item.example}</code></p>
-    <p style="margin: 0;"><strong style="color: #f700ff;">Game Use:</strong> ${item.usage}</p>
+    <p><strong>Example:</strong> <code>${item.example}</code></p>
+    <p><strong>Where Used:</strong> ${item.usage}</p>
   `;
 
   // Hover and Click Logic

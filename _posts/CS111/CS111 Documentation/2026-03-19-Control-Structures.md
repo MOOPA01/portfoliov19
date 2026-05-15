@@ -81,31 +81,13 @@ controlStructures.forEach((item, index) => {
   `;
 
   const details = document.createElement("div");
-  details.style.cssText = `
-    display: none;
-    padding: 15px;
-    border: 1px solid #333;
-    border-top: none;
-    background: #222222;
-    color: #dddddd;
-    font-size: 14px;
-    line-height: 1.5;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-  `;
+  details.style.display = "none";
+  details.style.padding = "10px";
+  details.style.border = "1px solid #ddd";
+  details.style.borderTop = "none";
+  details.style.background = "#fff";
+  details.style.lineHeight = "1.6";
   details.innerHTML = item.description;
-
-  // Hover and Click Logic
-  button.onmouseover = () => {
-    button.style.background = "#4692a7";
-    button.style.color = "white";
-  };
-  button.onmouseout = () => {
-    if (details.style.display !== "block") {
-        button.style.background = "#1a1a1a";
-        button.style.color = "#00ddff";
-    }
-  };
 
   button.addEventListener("click", () => {
     const isOpen = details.style.display === "block";
@@ -123,94 +105,84 @@ controlStructures.forEach((item, index) => {
 
 ---
 
-⭐ **Overview: Control Structures in Programming**
+# Control Structures in Programming
 
-Control structures are the decision‑making and flow‑controlling tools of programming. They determine **how**, **when**, and **how many times** code runs. Without them, a program would simply execute line‑by‑line with no ability to react, repeat, or branch — which would make games, AI, physics, and interactive systems impossible.
-
-In game development especially, control structures shape everything from enemy behavior to movement loops to UI logic. They allow your code to respond dynamically to the player and the game world.
-
-Below are the three core control structures you’re working with: **iteration**, **conditions**, and **nested conditions**.
+Control structures determine **how**, **when**, and **how many times** code runs. They're what make games feel alive — without them, code executes top-to-bottom with no branching, repeating, or reacting.
 
 ---
 
-## 🔁 **1. Iteration (Loops)**  
-Iteration allows code to repeat actions multiple times. Instead of writing the same line of code over and over, loops let you automate repetition — essential in a game that updates dozens of objects every frame.
+## How They Work Together
 
-### **Common Loop Types**
-- **For loop:** Runs a set number of times  
-  `for (let i = 0; i < 5; i++)`
-- **While loop:** Runs as long as a condition is true  
-  `while (enemy.health > 0)`
-- **For...of loop:** Iterates through arrays  
-  `for (const obj of gameObjects)`
-
-### **Where It Matters in Games**
-- Updating all sprites each frame  
-- Checking collisions across many objects  
-- Running AI logic  
-- Animating sequences  
-- Processing inventory or level data  
-
-Iteration is the engine that keeps your game world moving.
-
----
-
-## 🔍 **2. Conditions (If / Else)**  
-Conditions allow your code to make decisions. They check whether something is true or false and choose what to do next. This is the foundation of game logic — everything from health checks to AI reactions relies on conditions.
-
-### **Common Condition Patterns**
-- **Basic check:**  
-  `if (health <= 0)`
-- **If / else:**  
-  `if (isPaused) { ... } else { ... }`
-- **Else if:**  
-  `else if (state === "hostile")`
-
-### **Where It Matters in Games**
-- Game state transitions (menu, pause, combat)  
-- AI behavior (attack, flee, patrol)  
-- Input handling  
-- Trigger zones and events  
-- Health, damage, and win/lose conditions  
-
-Conditions give your game the ability to *react*.
+```mermaid
+flowchart TD
+    A([🎮 Game Loop Starts]) --> B{Is game running?}
+    B -- No --> Z([🛑 Exit])
+    B -- Yes --> C[["🔁 Loop through all game objects"]]
+    C --> D{Is object active?}
+    D -- No --> C
+    D -- Yes --> E{Is it an enemy?}
+    E -- No --> G[Update & render object]
+    E -- Yes --> F{Is enemy hostile?}
+    F -- No --> G
+    F -- Yes --> H{Player in range?}
+    H -- No --> I[Patrol]
+    H -- Yes --> J[⚔️ Attack]
+    I --> G
+    J --> G
+    G --> C
+```
 
 ---
 
-## 🧠 **3. Nested Conditions**  
-Nested conditions are conditions *inside* other conditions. They allow for more complex decision‑making — the kind of layered logic that real gameplay requires.
+## The Three Core Structures
 
-### **Example**
+### 🔁 Iteration — *Repeat*
+Loops run code multiple times, so you don't repeat yourself.
+
+| Loop | Use when… |
+|------|-----------|
+| `for` | You know the count upfront |
+| `while` | You repeat until a condition changes |
+| `for...of` | You're walking through an array |
+
+**In games:** updating sprites, checking collisions, running AI, processing inventory.
+
+---
+
+### ❓ Conditions — *Decide*
+`if / else` lets code react to what's actually happening.
+
+```js
+if (health <= 0)       { die(); }
+else if (health < 25)  { playWarning(); }
+else                   { continue(); }
+```
+
+**In games:** state changes, input handling, damage, win/lose logic, AI reactions.
+
+---
+
+### 🪆 Nested Conditions — *Refine*
+Conditions inside conditions handle layered, real-world logic.
+
 ```js
 if (enemy.isHostile) {
     if (distance < 50) {
-        enemy.attack();
+        enemy.attack();  // only if BOTH are true
     }
 }
 ```
 
-### **Where It Matters in Games**
-- AI decision trees  
-- Proximity checks  
-- Multi‑step logic (e.g., “if the player is close AND the enemy is hostile…”)  
-- Handling multiple states at once  
-- Complex interactions between objects  
-
-Nested conditions let your game make smarter, more nuanced decisions.
+**In games:** AI decision trees, proximity checks, multi-state interactions.
 
 ---
 
-🎯 **Why Control Structures Matter**
+## Quick Reference
 
-Control structures are the backbone of dynamic, interactive programming. They allow your game to:
+| Structure | Keyword | Purpose |
+|-----------|---------|---------|
+| Iteration | `for`, `while`, `for...of` | Repeat actions |
+| Condition | `if`, `else if`, `else` | Branch on truth |
+| Nested condition | `if` inside `if` | Layer decisions |
 
-- Repeat actions efficiently  
-- Respond to player input  
-- Make decisions based on game state  
-- Handle complex AI behavior  
-- Update dozens of objects every frame  
-- Create branching logic and varied outcomes  
-
-Without control structures, your game would be static and predictable. With them, you can build systems that feel alive, responsive, and intelligent.
-
----
+> **Rule of thumb:** If something needs to *repeat*, use a loop. If something needs to *choose*, use a condition. If the choice depends on *another* choice, nest them.
