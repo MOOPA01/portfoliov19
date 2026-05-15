@@ -12,216 +12,193 @@ permalink: /debug
 
 ---
 
-
-<div id="oop-app" style="font-family: Arial; max-width: 650px;">
-  <h2>Object-Oriented Programming </h2>
-  <p>Click a concept to learn more.</p>
-
-  <div id="oop-list"></div>
+<div id="debug-app" style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 650px; background: #1a1a1a; padding: 20px; border-radius: 8px; border: 1px solid #333; color: #e0e0e0;">
+  <h2 style="margin-top: 0; color: #ff6b35;">Debugging</h2>
+  <p style="color: #bbbbbb;">Click a technique to see how it was used in Heist.exe.</p>
+  <div id="debug-list"></div>
 </div>
 
 <script>
-// ----------------------
-// OOP DATA
-// ----------------------
-const oopConcepts = [
+const debugConcepts = [
   {
-    name: "Encapsulation",
-    description:
-      "Encapsulation means bundling data and methods that operate on that data into a single unit (a class). It also restricts direct access to some components, improving security and reducing complexity."
+    name: "Console Debugging",
+    description: "Gem.js logs when a gem is created and when it is collected. Guard.js logs its velocity every time it bounces off a wall. heistMusic.js logs the track name on playback and warns if the fetch fails.",
+    example: "console.log('Gem created:', this.spriteData?.id, 'at position', this.position);\nconsole.log('Gem collected! +' + this.value + ' | Total: ' + this.gameEnv.stats.coinsCollected);\nconsole.log(this.velocity.y); // Guard bounce\nconsole.warn('Background music: failed to start', error);"
   },
   {
-    name: "Inheritance",
-    description:
-      "Inheritance allows one class to acquire the properties and methods of another class. It promotes code reuse and establishes relationships between classes."
+    name: "Hitbox Visualization",
+    description: "In HeistL1.js and HeistL3.js, all Barrier objects have visible: true and a semi-transparent green color. This renders the collision zones over the map so you can see exactly where walls and borders are.",
+    example: "const border_top = {\n  color: 'rgba(0, 255, 136, 0.5)',\n  visible: true,\n  hitbox: { widthPercentage: 1.0, heightPercentage: 1.0 }\n};"
   },
   {
-    name: "Polymorphism",
-    description:
-      "Polymorphism allows methods to behave differently based on the object calling them. It enables one interface to be used for different underlying forms."
+    name: "Source-Level Debugging",
+    description: "Guard.js and Gem.js have strategic console.log calls at key execution points — collision events, velocity reversals, and gem collection — making it easy to set breakpoints in DevTools and step through the exact frame the bug occurs.",
+    example: "// Guard.js — set a breakpoint here to inspect collision state\nconsole.log('Collision has occurred, player has been destroyed.');\n\n// Gem.js — breakpoint here to check permanentlyCollected state\nif (this.permanentlyCollected) return;"
   },
   {
-    name: "Abstraction",
-    description:
-      "Abstraction hides complex implementation details and exposes only the essential features. It simplifies how objects are used and understood."
+    name: "Network Debugging",
+    description: "heistMusic.js fetches from the iTunes Search API. It checks response.ok before parsing, and throws a descriptive error if the request fails — making the failure visible in the Network tab.",
+    example: "const response = await fetch(this.endpoint);\nif (!response.ok) {\n  throw new Error('API request failed (' + response.status + ')');\n}\nconst data = await response.json();"
+  },
+  {
+    name: "Application Debugging",
+    description: "Gem collection totals are tracked in gameEnv.stats.coinsCollected. Boolean flags like permanentlyCollected and isPlaying track game state at runtime — all inspectable in DevTools.",
+    example: "// Gem.js — state stored on gameEnv\nthis.gameEnv.stats.coinsCollected = (this.gameEnv.stats.coinsCollected || 0) + this.value;\n\n// heistMusic.js — runtime flags\nthis.started = true;\nthis.isPlaying = true;"
+  },
+  {
+    name: "Element Inspection",
+    description: "heistMusic.js dynamically creates a toggle button and appends it to document.body. Gem.js hides its canvas element on collection via canvas.style.display. Both are inspectable in the Elements tab.",
+    example: "// heistMusic.js — button added to DOM\ndocument.body.appendChild(btn);\n\n// Gem.js — canvas hidden after collection\nif (this.canvas) this.canvas.style.display = 'none';"
   }
 ];
 
-// ----------------------
-// RENDER OOP VIEWER
-// ----------------------
-const oopContainer = document.getElementById("oop-list");
+const container = document.getElementById("debug-list");
 
-oopConcepts.forEach((concept, index) => {
-  const item = document.createElement("div");
-  item.style.marginBottom = "10px";
+debugConcepts.forEach((item, index) => {
+  const wrapper = document.createElement("div");
+  wrapper.style.marginBottom = "8px";
 
   const button = document.createElement("button");
-  button.textContent = `${index + 1}. ${concept.name}`;
-  button.style.width = "100%";
-  button.style.padding = "10px";
-  button.style.textAlign = "left";
-  button.style.cursor = "pointer";
-  button.style.border = "1px solid #fa9406";
-  button.style.background = "#cc6516";
-  button.style.fontSize = "16px";
+  button.textContent = `${index + 1}. ${item.name}`;
+  button.style.cssText = `
+    width: 100%;
+    padding: 12px;
+    text-align: left;
+    cursor: pointer;
+    border: 1px solid #ff6b35;
+    border-radius: 4px;
+    background: #1a1a1a;
+    color: #ff6b35;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+  `;
 
   const details = document.createElement("div");
-  details.textContent = concept.description;
-  details.style.display = "none";
-  details.style.padding = "10px";
-  details.style.border = "1px solid #ddd";
-  details.style.borderTop = "none";
-  details.style.background = "#fff";
+  details.style.cssText = `
+    display: none;
+    padding: 12px;
+    border: 1px solid #333;
+    border-top: none;
+    background: #1a1a1a;
+    color: #e0e0e0;
+    font-size: 14px;
+    line-height: 1.6;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  `;
+  details.innerHTML = `
+    <p>${item.description}</p>
+    <pre style="background:#2a2a2a; color:#ff6b35; padding:8px; border-radius:4px; font-size:12px; overflow-x:auto;">${item.example}</pre>
+  `;
 
+  button.onmouseover = () => { button.style.background = "#c44a1e"; button.style.color = "white"; };
+  button.onmouseout = () => {
+    if (details.style.display !== "block") { button.style.background = "#1a1a1a"; button.style.color = "#ff6b35"; }
+  };
   button.addEventListener("click", () => {
-    details.style.display = details.style.display === "none" ? "block" : "none";
+    const isOpen = details.style.display === "block";
+    details.style.display = isOpen ? "none" : "block";
+    button.style.borderRadius = isOpen ? "4px" : "4px 4px 0 0";
+    button.style.background = isOpen ? "#1a1a1a" : "#c44a1e";
+    button.style.color = isOpen ? "#ff6b35" : "white";
   });
 
-  item.appendChild(button);
-  item.appendChild(details);
-  oopContainer.appendChild(item);
+  wrapper.appendChild(button);
+  wrapper.appendChild(details);
+  container.appendChild(wrapper);
 });
 </script>
 
-### Inheritance Hierarchy
-```text
-GameObject        ← Level 1: shared position and draw logic
-  └── Character   ← Level 2: adds movement and gravity
-        ├── Player  ← Level 3: handles user keyboard input
-        └── Pirate    ← Level 3: handles hostile logic
-```
-### Used In Code!
+---
 
-```javascript
-class Pirate extends Character {
-    constructor(data, gameEnv) {
-        super(data, gameEnv);  // passes setup data to parent class
-        this.type = "Pirate";
-        this.isHostile = true; // boolean flag
-    }
+# Debugging in Heist.exe
 
-    handleCollision(other, direction) { // 2 parameters
-        if (other instanceof Player) {       // condition
-            if (this.distanceTo(other) < 50) { // nested condition
-                this.reaction("hostile");
-            }
-        }
-    }
+Debugging is how you find and fix problems in your code. Across Gem.js, Guard.js, heistMusic.js, and the level files, six different debugging techniques were used.
 
-    update() {
-        super.update(); // calls parent update, then adds wolf behavior
-        this.checkProximity();
-    }
-}
+---
+
+```mermaid
+flowchart LR
+    A[Bug Found] --> B{Where is it?}
+    B --> C[Game Logic\nconsole.log]
+    B --> D[Collision\nHitbox Overlay]
+    B --> E[API Call\nNetwork Tab]
+    B --> F[DOM and Styles\nElement Viewer]
+    B --> G[Saved State\nApplication Tab]
+    C --> H[✅ Fixed]
+    D --> H
+    E --> H
+    F --> H
+    G --> H
 ```
 
 ---
 
-# 🏴‍☠️ ## Explanation of the Pirate Class
+## The Six Techniques
 
----
-
-## 🔷 **1. Class Declaration**
-
+**🖨️ Console Debugging** — `Gem.js` · `Guard.js` · `heistMusic.js`
 ```js
-class Pirate extends Character {
+console.log('Gem created:', this.spriteData?.id, 'at position', this.position);
+console.log(this.velocity.y); // logs every time Guard bounces
+console.warn('Background music: failed to start', error);
 ```
-
-- `Pirate` is a new class.
-- It **extends** `Character`, meaning it inherits all the properties and methods from the `Character` class.
-- This is **inheritance**, one of the core pillars of OOP.
 
 ---
 
-## 🔷 **2. Constructor**
-
+**Hitbox Visualization** — `HeistL1.js` · `HeistL3.js`
 ```js
-constructor(data, gameEnv) {
-    super(data, gameEnv);  // passes setup data to parent class
-    this.type = "Pirate";
-    this.isHostile = true; // boolean flag
-}
+const border_top = {
+  color: 'rgba(0, 255, 136, 0.5)',
+  visible: true,
+  hitbox: { widthPercentage: 1.0, heightPercentage: 1.0 }
+};
 ```
-
-### What happens here:
-
-- The constructor runs when a new Pirate is created.
-- `super(data, gameEnv)` calls the parent `Character` constructor so the Pirate gets:
-  - position  
-  - sprite  
-  - movement logic  
-  - collision setup  
-  - any other shared character features  
-
-### Then you add Pirate‑specific properties:
-
-- `this.type = "Pirate"`  
-  Helps identify the object in the game.
-
-- `this.isHostile = true`  
-  Marks this character as an enemy.
-
-This is **encapsulation** — the Pirate stores its own data and behavior.
+All walls and borders rendered as semi-transparent green overlays to verify collision zone placement.
 
 ---
 
-## 🔷 **3. Collision Handling**
-
+**Source-Level Debugging** — `Guard.js` · `Gem.js`
 ```js
-handleCollision(other, direction) {
-    if (other instanceof Player) {       // condition
-        if (this.distanceTo(other) < 50) { // nested condition
-            this.reaction("hostile");
-        }
-    }
-}
+// Breakpoint targets — key state changes
+if (this.permanentlyCollected) return;           // Gem.js
+console.log("Collision has occurred...");         // Guard.js
 ```
-
-### What this does:
-
-1. This method runs whenever the Pirate collides with something.
-2. `other instanceof Player`  
-   Checks if the Pirate collided with the player.
-3. `this.distanceTo(other) < 50`  
-   Makes sure the player is close enough to trigger aggression.
-4. `this.reaction("hostile")`  
-   Tells the Pirate to react aggressively — maybe an animation, sound, or attack.
-
-This is **polymorphism** — the Pirate overrides the parent’s collision behavior with its own.
 
 ---
 
-## 🔷 **4. Update Loop**
-
+**Network Debugging** — `heistMusic.js`
 ```js
-update() {
-    super.update(); // calls parent update, then adds pirate behavior
-    this.checkProximity();
-}
+const response = await fetch(this.endpoint);
+if (!response.ok) throw new Error('API request failed (' + response.status + ')');
+const data = await response.json();
 ```
 
-### What this does:
+---
 
-- `super.update()`  
-  Runs the normal character update logic (movement, animation, physics).
-- `this.checkProximity()`  
-  Adds Pirate‑specific behavior each frame — likely checking if the player is near.
-
-This is a common OOP pattern:  
-**extend the parent behavior without replacing it.**
+**Application Debugging** — `Gem.js` · `heistMusic.js`
+```js
+this.gameEnv.stats.coinsCollected += this.value; // Gem.js — tracked on gameEnv
+this.started = true;                              // heistMusic.js — runtime flag
+```
 
 ---
 
-# 🧠 **In Summary**
-
-| Feature | What It Demonstrates |
-|--------|------------------------|
-| `extends Character` | Inheritance |
-| `super()` | Using parent class setup |
-| `handleCollision()` override | Polymorphism |
-| Pirate‑specific properties | Encapsulation |
-| `update()` override | Custom behavior layered on top of parent logic |
-
+**Element Inspection** — `heistMusic.js` · `Gem.js`
+```js
+document.body.appendChild(btn);             // heistMusic.js — button added to DOM
+this.canvas.style.display = 'none';         // Gem.js — canvas hidden on collection
+```
 
 ---
+
+| Technique | File | DevTools Tab |
+|-----------|------|-------------|
+| Console Debugging | Gem.js, Guard.js, heistMusic.js | Console |
+| Hitbox Visualization | HeistL1.js, HeistL3.js | Canvas overlay |
+| Source-Level Debugging | Guard.js, Gem.js | Sources |
+| Network Debugging | heistMusic.js | Network |
+| Application Debugging | Gem.js, heistMusic.js | Application |
+| Element Inspection | heistMusic.js, Gem.js | Elements |
+
+> **Workflow:** start with `console.log` to narrow down where the bug is, then use the matching DevTools tab to go deeper.
