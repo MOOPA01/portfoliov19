@@ -121,7 +121,7 @@ classDiagram
     class Player {
         +handleKeyInput()
     }
-    class Pirate {
+    class Guard {
         +isHostile = true
         +handleCollision()
         +checkProximity()
@@ -129,7 +129,7 @@ classDiagram
 
     GameObject <|-- Character
     Character <|-- Player
-    Character <|-- Pirate
+    Character <|-- Guard
 ```
 
 ---
@@ -139,7 +139,7 @@ classDiagram
 **Encapsulation** — bundle data and behavior into one unit
 Each class owns its own properties and methods. Outside code can't accidentally break internal state.
 ```js
-this.type = "Pirate";
+this.type = "Guard";
 this.isHostile = true;
 ```
 
@@ -148,7 +148,7 @@ this.isHostile = true;
 **Inheritance** — child classes reuse parent logic
 `Pirate extends Character` means Pirate gets position, sprite, movement, and physics for free — then adds its own behavior on top.
 ```js
-class Pirate extends Character { ... }
+class Guard extends Character { ... }
 ```
 
 ---
