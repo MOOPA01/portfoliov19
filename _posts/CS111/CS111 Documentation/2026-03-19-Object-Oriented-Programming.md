@@ -101,144 +101,88 @@ oopConcepts.forEach((concept, index) => {
 });
 </script>
 
-### Inheritance Hierarchy
-```text
-GameObject        ← Level 1: shared position and draw logic
-  └── Character   ← Level 2: adds movement and gravity
-        ├── Player  ← Level 3: handles user keyboard input
-        └── Pirate    ← Level 3: handles hostile logic
-```
-### Used In Code!
+# Object-Oriented Programming
 
-```javascript
-class Pirate extends Character {
-    constructor(data, gameEnv) {
-        super(data, gameEnv);  // passes setup data to parent class
-        this.type = "Pirate";
-        this.isHostile = true; // boolean flag
+OOP organizes code into **classes** — blueprints that bundle data and behavior together. In games, this means building reusable, layered objects like characters, enemies, and items.
+
+---
+
+```mermaid
+classDiagram
+    class GameObject {
+        +position
+        +draw()
+    }
+    class Character {
+        +movement
+        +gravity
+        +update()
+    }
+    class Player {
+        +handleKeyInput()
+    }
+    class Pirate {
+        +isHostile = true
+        +handleCollision()
+        +checkProximity()
     }
 
-    handleCollision(other, direction) { // 2 parameters
-        if (other instanceof Player) {       // condition
-            if (this.distanceTo(other) < 50) { // nested condition
-                this.reaction("hostile");
-            }
-        }
-    }
-
-    update() {
-        super.update(); // calls parent update, then adds wolf behavior
-        this.checkProximity();
-    }
-}
+    GameObject <|-- Character
+    Character <|-- Player
+    Character <|-- Pirate
 ```
 
 ---
 
-# 🏴‍☠️ ## Explanation of the Pirate Class
+## The Four Pillars
 
----
-
-## 🔷 **1. Class Declaration**
-
+**Encapsulation** — bundle data and behavior into one unit
+Each class owns its own properties and methods. Outside code can't accidentally break internal state.
 ```js
-class Pirate extends Character {
+this.type = "Pirate";
+this.isHostile = true;
 ```
-
-- `Pirate` is a new class.
-- It **extends** `Character`, meaning it inherits all the properties and methods from the `Character` class.
-- This is **inheritance**, one of the core pillars of OOP.
 
 ---
 
-## 🔷 **2. Constructor**
-
+**Inheritance** — child classes reuse parent logic
+`Pirate extends Character` means Pirate gets position, sprite, movement, and physics for free — then adds its own behavior on top.
 ```js
-constructor(data, gameEnv) {
-    super(data, gameEnv);  // passes setup data to parent class
-    this.type = "Pirate";
-    this.isHostile = true; // boolean flag
-}
+class Pirate extends Character { ... }
 ```
-
-### What happens here:
-
-- The constructor runs when a new Pirate is created.
-- `super(data, gameEnv)` calls the parent `Character` constructor so the Pirate gets:
-  - position  
-  - sprite  
-  - movement logic  
-  - collision setup  
-  - any other shared character features  
-
-### Then you add Pirate‑specific properties:
-
-- `this.type = "Pirate"`  
-  Helps identify the object in the game.
-
-- `this.isHostile = true`  
-  Marks this character as an enemy.
-
-This is **encapsulation** — the Pirate stores its own data and behavior.
 
 ---
 
-## 🔷 **3. Collision Handling**
-
+**Polymorphism** — child classes override parent behavior
+The parent defines `handleCollision()`, but Pirate replaces it with its own hostile logic. Same method name, different behavior.
 ```js
 handleCollision(other, direction) {
-    if (other instanceof Player) {       // condition
-        if (this.distanceTo(other) < 50) { // nested condition
+    if (other instanceof Player) {
+        if (this.distanceTo(other) < 50) {
             this.reaction("hostile");
         }
     }
 }
 ```
 
-### What this does:
-
-1. This method runs whenever the Pirate collides with something.
-2. `other instanceof Player`  
-   Checks if the Pirate collided with the player.
-3. `this.distanceTo(other) < 50`  
-   Makes sure the player is close enough to trigger aggression.
-4. `this.reaction("hostile")`  
-   Tells the Pirate to react aggressively — maybe an animation, sound, or attack.
-
-This is **polymorphism** — the Pirate overrides the parent’s collision behavior with its own.
-
 ---
 
-## 🔷 **4. Update Loop**
-
+**Abstraction** — hide complexity, expose only what's needed
+`super.update()` runs all parent logic in one call — movement, animation, physics — without the Pirate needing to know how any of it works.
 ```js
 update() {
-    super.update(); // calls parent update, then adds pirate behavior
-    this.checkProximity();
+    super.update();        // all parent logic runs here
+    this.checkProximity(); // then add pirate-specific behavior
 }
 ```
 
-### What this does:
-
-- `super.update()`  
-  Runs the normal character update logic (movement, animation, physics).
-- `this.checkProximity()`  
-  Adds Pirate‑specific behavior each frame — likely checking if the player is near.
-
-This is a common OOP pattern:  
-**extend the parent behavior without replacing it.**
-
 ---
 
-# 🧠 **In Summary**
+| Concept | Keyword | What it gives you |
+|---------|---------|-------------------|
+| Encapsulation | `this.` | Self-contained objects |
+| Inheritance | `extends` | Reusable parent logic |
+| Polymorphism | method override | Custom behavior per class |
+| Abstraction | `super()` | Simplified interface to complex logic |
 
-| Feature | What It Demonstrates |
-|--------|------------------------|
-| `extends Character` | Inheritance |
-| `super()` | Using parent class setup |
-| `handleCollision()` override | Polymorphism |
-| Pirate‑specific properties | Encapsulation |
-| `update()` override | Custom behavior layered on top of parent logic |
-
-
----
+> **Pattern to remember:** call `super()` first to keep parent behavior, then add your own. Extend — don't replace.

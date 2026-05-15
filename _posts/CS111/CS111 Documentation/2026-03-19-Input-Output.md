@@ -136,101 +136,60 @@ ioCategories.forEach((item, index) => {
 
 ---
 
-⭐ **Overview: Input / Output in Game Development**
+# Input / Output in Game Development
 
-Input/Output (I/O) is the communication layer of your game — the bridge between the player, the game world, and external systems. It determines **how your game receives information** (input) and **how it displays or sends information** (output). Without I/O, your game wouldn’t move, react, draw, or communicate.
-
-In practice, I/O covers everything from rendering graphics to handling keyboard input to loading configuration files to making API calls. Below is a deeper look at the four major I/O systems you’re working with.
+I/O is how your game **receives** information and **sends** it back out. Every interactive moment runs through this cycle.
 
 ---
 
-## 🎨 **1. Canvas Rendering (Output)**  
-Canvas rendering is how your game draws everything the player sees. It’s the visual output layer responsible for:
-
-- Sprites  
-- Backgrounds  
-- UI elements  
-- Animations  
-- Effects (particles, flashes, shadows)  
-
-### **How It Works**
-The game uses a rendering context (usually `ctx`) to draw shapes, images, and text onto the canvas every frame.
-
-Examples include:
-
-- `ctx.fillRect(x, y, width, height)`  
-- `ctx.drawImage(sprite, x, y)`  
-
-### **Why It Matters**
-Canvas rendering is the heartbeat of your game’s visuals. Every frame, it outputs the current state of the world — positions, animations, effects — giving the player a smooth, responsive experience.
+```mermaid
+flowchart LR
+    A[⌨️ Player Input] --> B[🔄 Game Loop]
+    C[⚙️ GameEnv Config] --> B
+    D[🌐 API Response] --> B
+    B --> E[🎨 Canvas Render]
+    B --> F[🌐 API Request]
+```
 
 ---
 
-## ⌨️ **2. Keyboard Event Handlers (Input)**  
-Keyboard events are how the player communicates with your game. They provide real‑time input that drives movement, actions, and UI navigation.
+## The Four Systems
 
-### **How It Works**
-JavaScript listens for events like:
-
-- `keydown` — when a key is pressed  
-- `keyup` — when a key is released  
-
-These events trigger functions that update the player’s state:
-
-- Jumping  
-- Moving left/right  
-- Attacking  
-- Pausing  
-- Opening menus  
-
-### **Why It Matters**
-Without keyboard input, your game wouldn’t be interactive. Event handlers translate physical key presses into in‑game actions, making the player feel connected to the world.
+**Keyboard Events** `Input`
+```js
+window.addEventListener("keydown", (e) => {
+  if (e.key === " ") player.jump();
+});
+```
+Translates physical key presses into in-game actions. `keydown` fires on press, `keyup` on release. Used for movement, jumping, attacking, and menu navigation.
 
 ---
 
-## ⚙️ **3. GameEnv Configuration (Input)**  
-GameEnv configuration is the structured input that defines how your game world behaves. It’s not player input — it’s *system input* that sets the rules of the environment.
-
-### **What It Controls**
-- Canvas size  
-- Gravity  
-- Debug mode  
-- Physics settings  
-- Difficulty  
-- Asset paths  
-- NPC defaults  
-
-### **Why It Matters**
-GameEnv acts as the blueprint for your game world. It ensures consistency, makes tuning easier, and allows you to adjust global behavior without rewriting code. It’s the foundation that everything else builds on.
+**GameEnv Config** `Input`
+```js
+const gameEnv = { gravity: 0.4, debug: false };
+```
+System-level input set once at startup — not from the player, but from your code. Defines canvas size, gravity, physics, difficulty, and asset paths. Everything else builds on top of it.
 
 ---
 
-## 🌐 **4. API Calls (Input + Output)**  
-API calls allow your game to communicate with external systems — sending data out and receiving data back. This is where your game becomes connected, dynamic, and scalable.
-
-### **Common Uses**
-- **Leaderboards:** Fetching top scores  
-- **NPC AI:** Requesting behavior profiles  
-- **Cloud saves:** Storing player progress  
-- **Remote configuration:** Updating difficulty or events  
-- **Multiplayer:** Syncing player states  
-
-### **Why It Matters**
-API calls extend your game beyond the local machine. They enable online features, dynamic content, and smarter AI. They turn your game into a living system that can evolve over time.
+**API Calls** `Input + Output`
+```js
+fetch("/api/score")
+  .then(res => res.json())
+  .then(data => show(data));
+```
+Connects your game to the outside world. Sends data out and receives it back — used for leaderboards, cloud saves, dynamic AI behavior, and multiplayer sync.
 
 ---
 
-🎯 **Why Input/Output Matters**
-
-Input/Output is what makes your game *interactive*, *visual*, and *connected*. It allows your game to:
-
-- Receive player actions  
-- Render the world every frame  
-- Load configuration and assets  
-- Communicate with servers  
-- Update dynamically based on external data  
-
-Without I/O, your game would be a static script. With it, you get movement, visuals, AI, UI, and online features — everything that makes a game feel alive.
+**Canvas Rendering** `Output`
+```js
+ctx.fillRect(x, y, w, h);
+ctx.drawImage(sprite, x, y);
+```
+Draws everything the player sees — sprites, backgrounds, UI, effects — every frame. It's the final step in the loop: state gets updated, then canvas draws it.
 
 ---
 
+> **The core idea:** Input updates *state*. Output draws *that state*. The game loop is the bridge between the two — running every frame.

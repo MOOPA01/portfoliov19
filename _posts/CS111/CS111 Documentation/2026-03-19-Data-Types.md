@@ -121,109 +121,91 @@ dataTypes.forEach((item, index) => {
 
 ---
 
-⭐ **Overview: Data Types in Game Development**
+# Data Types in Programming
 
-Data types are the fundamental building blocks of all programming. They define *what kind of information* your code is working with and determine how that information behaves. In game development, choosing the right data type isn’t just a technical detail — it affects performance, clarity, and how easily systems interact with each other.
-
-Below is a deeper look at the core data types you’re using, along with how they appear in real game systems.
+Data types define **what kind of information** your code works with — and how it behaves. Choosing the right one affects performance, readability, and how cleanly your systems talk to each other.
 
 ---
 
-## 🔢 **1. Number**
-Numbers represent any kind of numeric value: speed, health, position, timers, damage, and more.
+## The Big Picture
 
-### **Example**
-`velocity: 3`
-
-### **Where It’s Used**
-- Physics calculations  
-- Movement speed  
-- Animation timing  
-- Hit detection  
-- Cooldowns and timers  
-
-Numbers are the backbone of anything that changes over time. If something moves, rotates, jumps, or counts down, a number is behind it.
-
----
-
-## 📝 **2. String**
-Strings store text — but in games, they’re often used for *labels*, *states*, and *paths* rather than long sentences.
-
-### **Example**
-`"hostile"`
-
-### **Where It’s Used**
-- NPC states (`"idle"`, `"patrol"`, `"hostile"`)  
-- File paths for sprites or audio  
-- Dialogue or UI text  
-- Identifiers for items, quests, or events  
-
-Strings help your game understand *what something is* or *what mode it’s in*.
+```mermaid
+mindmap
+  root((Data Types))
+    Number
+      Health & damage
+      Speed & physics
+      Timers & cooldowns
+    String
+      NPC states
+      Sprite file paths
+      UI & dialogue
+    Boolean
+      isPaused / isAlive
+      Collision toggles
+      Input flags
+    Array
+      All active sprites
+      Enemy & bullet lists
+      Inventory items
+    JSON Object
+      NPC configuration
+      Level definitions
+      Save files
+```
 
 ---
 
-## ✔️ **3. Boolean**
-Booleans represent true/false values — simple but incredibly powerful for controlling game logic.
+## The Five Core Types
 
-### **Example**
-`isPaused: true`
-
-### **Where It’s Used**
-- Game loop control  
-- Collision toggles  
-- AI behavior flags  
-- Visibility or invincibility states  
-- Input handling  
-
-Booleans act like switches that turn features or behaviors on and off.
+**Number** — anything that changes over time
+```js
+velocity: 3
+```
+Physics, health, movement speed, animation timing, hit detection.
 
 ---
 
-## 📦 **4. Array**
-Arrays store lists of related items. In games, they’re essential for managing groups of objects.
-
-### **Example**
-`gameObjects[]`
-
-### **Where It’s Used**
-- All active sprites in the scene  
-- Lists of enemies, bullets, particles, or items  
-- Pathfinding nodes  
-- Inventory systems  
-- Level data  
-
-Arrays let you loop through many objects and update them efficiently each frame.
+**String** — labels, states, and identifiers
+```js
+state: "hostile"
+```
+NPC behavior modes, sprite paths, dialogue, item/quest IDs.
 
 ---
 
-## 🧩 **5. JSON Object**
-JSON objects store structured data — perfect for configuration, settings, and anything with multiple properties.
-
-### **Example**
-`{ hitbox: { width: 40 } }`
-
-### **Where It’s Used**
-- NPC configuration (speed, health, hitbox, AI settings)  
-- Level definitions  
-- Save files  
-- Dialogue trees  
-- Game settings  
-
-JSON objects let you group related information together in a clean, readable format.
+**Boolean** — on/off switches for game logic
+```js
+isPaused: true
+```
+Game loop control, AI flags, visibility, invincibility, input handling.
 
 ---
 
-🎯 **Why Data Types Matter**
-
-Understanding data types helps you:
-
-- Write cleaner, more predictable code  
-- Avoid bugs caused by mismatched values  
-- Structure game systems more effectively  
-- Communicate intent to other developers  
-- Build scalable features that won’t break later  
-
-In game development, data types aren’t just technical details — they shape how your entire game behaves. Mastering them gives you control over movement, AI, physics, UI, and every system that makes your game come alive.
+**Array** — ordered lists of related things
+```js
+gameObjects[]
+```
+Every active sprite, enemy/bullet/particle groups, inventory, level data.
 
 ---
 
+**JSON Object** — structured data with multiple properties
+```js
+{ hitbox: { width: 40, height: 60 } }
+```
+NPC configs, level definitions, save files, game settings, dialogue trees.
+
+---
+
+## Choosing the Right Type
+
+| If you need to store… | Use |
+|-----------------------|-----|
+| A count, position, or measurement | `Number` |
+| A name, mode, or file path | `String` |
+| A yes/no state | `Boolean` |
+| A collection of similar things | `Array` |
+| A thing with many properties | `JSON Object` |
+
+> **Common mistake:** using a `String` like `"true"` instead of a `Boolean` `true`. They look similar but behave completely differently in logic checks.
