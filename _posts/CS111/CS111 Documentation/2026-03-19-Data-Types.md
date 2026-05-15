@@ -14,85 +14,115 @@ permalink: /data
 ---
 
 
-<div id="datatype-app" style="font-family: Arial; max-width: 650px;">
-  <h2>Data Types (Interactive Viewer)</h2>
-  <p>Click a data type to learn more.</p>
+<div id="datatype-app" style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 650px; background: #1a1a1a; padding: 20px; border-radius: 8px; border: 1px solid #333; color: #e0e0e0;">
+  <h2 style="margin-top: 0; color: #f700ff;">Data Types</h2>
+  <p style="color: #bbbbbb;">Click a type to see how it's used in game logic.</p>
 
   <div id="datatype-list"></div>
 </div>
 
 <script>
 // ----------------------
-// DATA TYPES TABLE (converted into objects)
+// DATA TYPES: Fixed Syntax
 // ----------------------
 const dataTypes = [
   {
     type: "Number",
     example: "velocity: 3",
-    usage: "Physics and movement"
+    usage: "Handling physics, health points, and movement speed."
   },
   {
     type: "String",
-    example: `"hostile"`,
-    usage: "NPC state and sprite paths"
+    example: '"hostile"',
+    usage: "Defining NPC states, sprite file paths, and UI text."
   },
   {
     type: "Boolean",
     example: "isPaused: true",
-    usage: "Game loop control flags"
+    usage: "Binary flags for game logic (e.g., isJumping, isAlive)."
   },
   {
     type: "Array",
     example: "gameObjects[]",
-    usage: "Collection of sprites used"
+    usage: "Storing lists of enemies, bullets, or inventory items."
   },
   {
     type: "JSON Object",
-    example: `{ hitbox: { width: 40 } }`,
-    usage: "NPC configuration"
+    example: '{ hitbox: { width: 40 } }',
+    usage: "Complex configurations for NPCs or level settings."
   }
-];
+]; // Array properly closed
 
 // ----------------------
-// RENDER INTERACTIVE VIEWER
+// RENDER: Neon Dark Mode
 // ----------------------
 const dtContainer = document.getElementById("datatype-list");
 
 dataTypes.forEach((item, index) => {
   const wrapper = document.createElement("div");
-  wrapper.style.marginBottom = "10px";
+  wrapper.style.marginBottom = "8px";
 
+  // Styled Button
   const button = document.createElement("button");
   button.textContent = `${index + 1}. ${item.type}`;
-  button.style.width = "100%";
-  button.style.padding = "10px";
-  button.style.textAlign = "left";
-  button.style.cursor = "pointer";
-  button.style.border = "1px solid #f700ff";
-  button.style.background = "#c020a0";
-  button.style.fontSize = "16px";
-
-  const details = document.createElement("div");
-  details.style.display = "none";
-  details.style.padding = "10px";
-  details.style.border = "1px solid #ddd";
-  details.style.borderTop = "none";
-  details.style.background = "#fff";
-  details.style.lineHeight = "1.6";
-
-  details.innerHTML = `
-    <p><strong>Example:</strong> <code>${item.example}</code></p>
-    <p><strong>Where Used:</strong> ${item.usage}</p>
+  button.style.cssText = `
+    width: 100%;
+    padding: 12px;
+    text-align: left;
+    cursor: pointer;
+    border: 1px solid #f700ff;
+    border-radius: 4px;
+    background: #1a1a1a;
+    color: #f700ff;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.2s ease;
   `;
 
+  // Content Box (Fixed visibility)
+  const details = document.createElement("div");
+  details.style.cssText = `
+    display: none;
+    padding: 15px;
+    border: 1px solid #333;
+    border-top: none;
+    background: #222222;
+    color: #dddddd;
+    font-size: 14px;
+    line-height: 1.5;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  `;
+  
+  details.innerHTML = `
+    <p style="margin: 0 0 5px 0;"><strong style="color: #f700ff;">Example:</strong> <code style="background: #333; color: #fff; padding: 2px 4px; border-radius: 3px;">${item.example}</code></p>
+    <p style="margin: 0;"><strong style="color: #f700ff;">Game Use:</strong> ${item.usage}</p>
+  `;
+
+  // Hover and Click Logic
+  button.onmouseover = () => {
+    button.style.background = "#c020a0";
+    button.style.color = "white";
+  };
+  button.onmouseout = () => {
+    if (details.style.display !== "block") {
+      button.style.background = "#1a1a1a";
+      button.style.color = "#f700ff";
+    }
+  };
+
   button.addEventListener("click", () => {
-    details.style.display = details.style.display === "none" ? "block" : "none";
+    const isOpen = details.style.display === "block";
+    details.style.display = isOpen ? "none" : "block";
+    button.style.borderRadius = isOpen ? "4px" : "4px 4px 0 0";
+    button.style.background = isOpen ? "#1a1a1a" : "#c020a0";
+    button.style.color = isOpen ? "#f700ff" : "white";
   });
 
   wrapper.appendChild(button);
   wrapper.appendChild(details);
   dtContainer.appendChild(wrapper);
-});
+}); // Loop properly closed
 </script>
 
 ---

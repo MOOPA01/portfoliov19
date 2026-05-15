@@ -12,88 +12,111 @@ permalink: /operators
 
 ---
 
-<div id="operators-app" style="font-family: Arial; max-width: 650px;">
-  <h2>Operators (Interactive Viewer)</h2>
-  <p>Click a category to explore examples and explanations.</p>
+<div id="operators-app" style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 650px; background: #1a1a1a; padding: 20px; border-radius: 8px; border: 1px solid #333; color: #e0e0e0;">
+  <h2 style="margin-top: 0; color: #ffea04;">Operators</h2>
+  <p style="color: #bbbbbb;">Click a category to see operators in action.</p>
 
   <div id="operators-list"></div>
 </div>
 
 <script>
 // ----------------------
-// OPERATORS DATA
+// OPERATORS DATA: Fixed Syntax
 // ----------------------
 const operatorCategories = [
   {
     name: "String Operations",
     description: `
-      <p><strong>Concatenation:</strong> <code>"Hello" + " World"</code> → "Hello World"</p>
-      <p><strong>Template Literals:</strong> <code>\`Player: \${name}\`</code></p>
-      <p><strong>Length:</strong> <code>"hostile".length</code> → 7</p>
-      <p><strong>Accessing Characters:</strong> <code>"wolf"[0]</code> → "w"</p>
-      <p><strong>Use Case:</strong> Building UI text, NPC states, file paths, and debug logs.</p>
+      <strong style="color: #ffea04;">Concatenation:</strong> <code>"Hi " + name</code><br>
+      <strong style="color: #ffea04;">Template Literals:</strong> <code>\`HP: \${hp}\`</code><br>
+      <strong style="color: #ffea04;">Access:</strong> <code>"wolf"[0]</code> → "w"<br>
+      <strong>Game Use:</strong> Building dynamic UI text, file paths, and NPC state labels.
     `
   },
   {
     name: "Mathematical Operations",
     description: `
-      <p><strong>Addition:</strong> <code>speed + 1</code></p>
-      <p><strong>Subtraction:</strong> <code>health - 10</code></p>
-      <p><strong>Multiplication:</strong> <code>velocity * 2</code></p>
-      <p><strong>Division:</strong> <code>distance / time</code></p>
-      <p><strong>Modulo:</strong> <code>frame % 60</code> → useful for timing</p>
-      <p><strong>Use Case:</strong> Movement, physics, timers, damage, cooldowns.</p>
+      <strong style="color: #ffea04;">Basic:</strong> <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code><br>
+      <strong style="color: #ffea04;">Modulo:</strong> <code>frame % 60</code> (Great for timing!)<br>
+      <strong>Game Use:</strong> Movement physics, damage calculations, and animation frame logic.
     `
   },
   {
     name: "Boolean Expressions",
     description: `
-      <p><strong>Comparison:</strong> <code>health > 0</code></p>
-      <p><strong>Equality:</strong> <code>state === "hostile"</code></p>
-      <p><strong>Logical AND:</strong> <code>isAlive && isVisible</code></p>
-      <p><strong>Logical OR:</strong> <code>isPaused || isMenuOpen</code></p>
-      <p><strong>Negation:</strong> <code>!isAttacking</code></p>
-      <p><strong>Use Case:</strong> AI decisions, collisions, game loop control, input handling.</p>
+      <strong style="color: #ffea04;">Logic:</strong> <code>&&</code> (AND), <code>||</code> (OR), <code>!</code> (NOT)<br>
+      <strong style="color: #ffea04;">Comparison:</strong> <code>===</code>, <code>></code>, <code><</code><br>
+      <strong>Game Use:</strong> AI decision making, collision detection, and game state toggles.
     `
   }
-];
+]; // Array properly closed
 
 // ----------------------
-// RENDER INTERACTIVE VIEWER
+// RENDER: Neon Gold Dark Mode
 // ----------------------
 const opContainer = document.getElementById("operators-list");
 
 operatorCategories.forEach((category, index) => {
   const wrapper = document.createElement("div");
-  wrapper.style.marginBottom = "10px";
+  wrapper.style.marginBottom = "8px";
 
+  // Styled Button
   const button = document.createElement("button");
   button.textContent = `${index + 1}. ${category.name}`;
-  button.style.width = "100%";
-  button.style.padding = "10px";
-  button.style.textAlign = "left";
-  button.style.cursor = "pointer";
-  button.style.border = "1px solid #ffea04";
-  button.style.background = "#cfa530";
-  button.style.fontSize = "16px";
+  button.style.cssText = `
+    width: 100%;
+    padding: 12px;
+    text-align: left;
+    cursor: pointer;
+    border: 1px solid #ffea04;
+    border-radius: 4px;
+    background: #1a1a1a;
+    color: #ffea04;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+  `;
 
+  // Content Box
   const details = document.createElement("div");
-  details.style.display = "none";
-  details.style.padding = "10px";
-  details.style.border = "1px solid #ddd";
-  details.style.borderTop = "none";
-  details.style.background = "#fff";
-  details.style.lineHeight = "1.6";
+  details.style.cssText = `
+    display: none;
+    padding: 15px;
+    border: 1px solid #333;
+    border-top: none;
+    background: #222222;
+    color: #dddddd;
+    font-size: 14px;
+    line-height: 1.6;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  `;
   details.innerHTML = category.description;
 
+  // Hover and Click Logic
+  button.onmouseover = () => {
+    button.style.background = "#cfa530";
+    button.style.color = "white";
+  };
+  button.onmouseout = () => {
+    if (details.style.display !== "block") {
+      button.style.background = "#1a1a1a";
+      button.style.color = "#ffea04";
+    }
+  };
+
   button.addEventListener("click", () => {
-    details.style.display = details.style.display === "none" ? "block" : "none";
+    const isOpen = details.style.display === "block";
+    details.style.display = isOpen ? "none" : "block";
+    button.style.borderRadius = isOpen ? "4px" : "4px 4px 0 0";
+    button.style.background = isOpen ? "#1a1a1a" : "#cfa530";
+    button.style.color = isOpen ? "#ffea04" : "white";
   });
 
   wrapper.appendChild(button);
   wrapper.appendChild(details);
   opContainer.appendChild(wrapper);
-});
+}); // Loop properly closed
 </script>
 
 ---

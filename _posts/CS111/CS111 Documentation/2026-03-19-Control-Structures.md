@@ -13,88 +13,112 @@ permalink: /controlStructures
 
 ---
 
-<div id="control-app" style="font-family: Arial; max-width: 650px;">
-  <h2>Control Structures (Interactive Viewer)</h2>
-  <p>Click a category to explore examples and explanations.</p>
+<div id="control-app" style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 650px; background: #1a1a1a; padding: 20px; border-radius: 8px; border: 1px solid #333; color: #e0e0e0;">
+  <h2 style="margin-top: 0; color: #00ddff;">Control Structures</h2>
+  <p style="color: #bbbbbb;">Click a category to see examples and game use cases.</p>
 
   <div id="control-list"></div>
 </div>
 
 <script>
 // ----------------------
-// CONTROL STRUCTURES DATA
+// DATA: Fixed Brackets & Braces
 // ----------------------
 const controlStructures = [
   {
     name: "Iteration (Loops)",
     description: `
-      <p><strong>For Loop:</strong> <code>for (let i = 0; i < 5; i++)</code></p>
-      <p><strong>While Loop:</strong> <code>while (enemy.health > 0)</code></p>
-      <p><strong>For...of:</strong> <code>for (const obj of gameObjects)</code></p>
-      <p><strong>Use Case:</strong> Updating sprites, checking collisions, running AI logic every frame.</p>
+      <strong style="color: #00ddff;">How it works:</strong> Repeats code while a condition is met.<br>
+      <code style="background: #2a2a2a; color: #f8f8f2; padding: 2px 4px;">for (let i = 0; i < 5; i++)</code> <br>
+      <strong>Game Use:</strong> Updating all 60 sprites every frame or checking collisions in a list.
     `
   },
   {
     name: "Conditions (If / Else)",
     description: `
-      <p><strong>Basic Condition:</strong> <code>if (health <= 0)</code></p>
-      <p><strong>If / Else:</strong> <code>if (isPaused) { ... } else { ... }</code></p>
-      <p><strong>Else If:</strong> <code>else if (state === "hostile")</code></p>
-      <p><strong>Use Case:</strong> Game state changes, AI decisions, input handling.</p>
+      <strong style="color: #00ddff;">How it works:</strong> Branches logic based on true/false checks.<br>
+      <code style="background: #2a2a2a; color: #f8f8f2; padding: 2px 4px;">if (health <= 0) { die(); }</code> <br>
+      <strong>Game Use:</strong> Triggering a 'Game Over' screen or handling keyboard input.
     `
   },
   {
     name: "Nested Conditions",
     description: `
-      <p><strong>Nested If:</strong></p>
-      <pre style="background:#f0f0f0; padding:8px;">
-if (enemy.isHostile) {
-    if (distance < 50) {
-        enemy.attack();
-    }
-}
-      </pre>
-      <p><strong>Use Case:</strong> Complex decision-making like AI behavior, proximity checks, and layered logic.</p>
+      <strong style="color: #00ddff;">How it works:</strong> Places checks inside checks for complex logic.<br>
+      <pre style="background:#2a2a2a; color: #f8f8f2; padding:8px; margin-top:5px; border-radius:4px; font-size:12px; border: 1px solid #444;">if (enemy.isHostile) {
+  if (distance < 50) {
+    enemy.attack();
+  }
+}</pre>
+      <strong>Game Use:</strong> Advanced AI (e.g., "If enemy is alert AND player is in range").
     `
   }
-];
+]; // Array properly closed
 
 // ----------------------
-// RENDER INTERACTIVE VIEWER
+// RENDER: Clean Dark Logic
 // ----------------------
 const controlContainer = document.getElementById("control-list");
 
 controlStructures.forEach((item, index) => {
   const wrapper = document.createElement("div");
-  wrapper.style.marginBottom = "10px";
+  wrapper.style.marginBottom = "8px";
 
   const button = document.createElement("button");
   button.textContent = `${index + 1}. ${item.name}`;
-  button.style.width = "100%";
-  button.style.padding = "10px";
-  button.style.textAlign = "left";
-  button.style.cursor = "pointer";
-  button.style.border = "1px solid #00ddff";
-  button.style.background = "#4692a7";
-  button.style.fontSize = "16px";
+  button.style.cssText = `
+    width: 100%;
+    padding: 12px;
+    text-align: left;
+    cursor: pointer;
+    border: 1px solid #00ddff;
+    border-radius: 4px;
+    background: #1a1a1a;
+    color: #00ddff;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+  `;
 
   const details = document.createElement("div");
-  details.style.display = "none";
-  details.style.padding = "10px";
-  details.style.border = "1px solid #ddd";
-  details.style.borderTop = "none";
-  details.style.background = "#fff";
-  details.style.lineHeight = "1.6";
+  details.style.cssText = `
+    display: none;
+    padding: 15px;
+    border: 1px solid #333;
+    border-top: none;
+    background: #222222;
+    color: #dddddd;
+    font-size: 14px;
+    line-height: 1.5;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  `;
   details.innerHTML = item.description;
 
+  // Hover and Click Logic
+  button.onmouseover = () => {
+    button.style.background = "#4692a7";
+    button.style.color = "white";
+  };
+  button.onmouseout = () => {
+    if (details.style.display !== "block") {
+        button.style.background = "#1a1a1a";
+        button.style.color = "#00ddff";
+    }
+  };
+
   button.addEventListener("click", () => {
-    details.style.display = details.style.display === "none" ? "block" : "none";
+    const isOpen = details.style.display === "block";
+    details.style.display = isOpen ? "none" : "block";
+    button.style.borderRadius = isOpen ? "4px" : "4px 4px 0 0";
+    button.style.background = isOpen ? "#1a1a1a" : "#4692a7";
+    button.style.color = isOpen ? "#00ddff" : "white";
   });
 
   wrapper.appendChild(button);
   wrapper.appendChild(details);
   controlContainer.appendChild(wrapper);
-});
+}); // Loop properly closed
 </script>
 
 ---

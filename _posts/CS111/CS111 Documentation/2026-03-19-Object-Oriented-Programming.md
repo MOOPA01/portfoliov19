@@ -13,37 +13,33 @@ permalink: /OOP
 ---
 
 
-<div id="oop-app" style="font-family: Arial; max-width: 650px;">
-  <h2>Object-Oriented Programming </h2>
-  <p>Click a concept to learn more.</p>
+<div id="oop-app" style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 650px; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd;">
+  <h2 style="margin-top: 0; color: #333;">Object-Oriented Programming</h2>
+  <p style="color: #666;">Click a concept to expand details.</p>
 
   <div id="oop-list"></div>
 </div>
 
 <script>
 // ----------------------
-// OOP DATA
+// SHORTENED OOP DATA
 // ----------------------
 const oopConcepts = [
   {
     name: "Encapsulation",
-    description:
-      "Encapsulation means bundling data and methods that operate on that data into a single unit (a class). It also restricts direct access to some components, improving security and reducing complexity."
+    description: "Bundles data (properties) and methods (logic) into one unit. It hides internal state to protect data from outside interference."
   },
   {
     name: "Inheritance",
-    description:
-      "Inheritance allows one class to acquire the properties and methods of another class. It promotes code reuse and establishes relationships between classes."
+    description: "Allows a 'child' class to reuse code from a 'parent' class. It creates a hierarchy and eliminates redundant code."
   },
   {
     name: "Polymorphism",
-    description:
-      "Polymorphism allows methods to behave differently based on the object calling them. It enables one interface to be used for different underlying forms."
+    description: "The ability for different classes to be treated as instances of the same general class through the same interface (e.g., overriding methods)."
   },
   {
     name: "Abstraction",
-    description:
-      "Abstraction hides complex implementation details and exposes only the essential features. It simplifies how objects are used and understood."
+    description: "Hiding complex background details and only showing the essential features of an object to the user."
   }
 ];
 
@@ -54,28 +50,49 @@ const oopContainer = document.getElementById("oop-list");
 
 oopConcepts.forEach((concept, index) => {
   const item = document.createElement("div");
-  item.style.marginBottom = "10px";
+  item.style.marginBottom = "8px";
 
+  // Styled Button
   const button = document.createElement("button");
   button.textContent = `${index + 1}. ${concept.name}`;
-  button.style.width = "100%";
-  button.style.padding = "10px";
-  button.style.textAlign = "left";
-  button.style.cursor = "pointer";
-  button.style.border = "1px solid #fa9406";
-  button.style.background = "#cc6516";
-  button.style.fontSize = "16px";
+  button.style.cssText = `
+    width: 100%;
+    padding: 12px;
+    text-align: left;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background: #cc6516;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.2s ease;
+  `;
 
+  // Content Box (Fixed white-on-white)
   const details = document.createElement("div");
+  details.style.cssText = `
+    display: none;
+    padding: 15px;
+    border: 1px solid #cc6516;
+    border-top: none;
+    background: #ffffff;
+    color: #222222;
+    font-size: 14px;
+    line-height: 1.5;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  `;
   details.textContent = concept.description;
-  details.style.display = "none";
-  details.style.padding = "10px";
-  details.style.border = "1px solid #ddd";
-  details.style.borderTop = "none";
-  details.style.background = "#fff";
 
+  // Hover and Click Logic
+  button.onmouseover = () => button.style.background = "#e67e22";
+  button.onmouseout = () => button.style.background = "#cc6516";
+  
   button.addEventListener("click", () => {
-    details.style.display = details.style.display === "none" ? "block" : "none";
+    const isOpen = details.style.display === "block";
+    details.style.display = isOpen ? "none" : "block";
+    button.style.borderRadius = isOpen ? "4px" : "4px 4px 0 0";
   });
 
   item.appendChild(button);

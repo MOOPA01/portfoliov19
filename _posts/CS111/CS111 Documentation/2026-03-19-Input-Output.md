@@ -14,123 +14,124 @@ permalink: /io
 ---
 
 
-<div id="io-app" style="font-family: Arial; max-width: 650px;">
-  <h2>Input / Output (Interactive Viewer)</h2>
-  <p>Click a category to explore examples and explanations.</p>
+<div id="io-app" style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 650px; background: #1a1a1a; padding: 20px; border-radius: 8px; border: 1px solid #333; color: #e0e0e0;">
+  <h2 style="margin-top: 0; color: #8c00ff;">Input / Output</h2>
+  <p style="color: #bbbbbb;">Click a category to see how the game communicates.</p>
 
   <div id="io-list"></div>
 </div>
 
 <script>
 // ----------------------
-// INPUT / OUTPUT DATA
+// INPUT / OUTPUT DATA: Fixed Syntax
 // ----------------------
 const ioCategories = [
   {
-    name: "Canvas Rendering",
+    name: "Canvas Rendering (Output)",
     description: `
-      <p><strong>Drawing Shapes:</strong></p>
-      <pre style="background:#f0f0f0; padding:8px;">
-ctx.fillRect(x, y, width, height);
-ctx.drawImage(sprite, x, y);
-      </pre>
-      <p><strong>Use Case:</strong> Rendering sprites, backgrounds, UI elements, animations.</p>
-      <p>Canvas output is the visual layer of your game — everything the player sees is drawn here.</p>
+      <strong style="color: #8c00ff;">Visual Layer:</strong> Draws what the player sees every frame.<br>
+      <pre style="background:#2a2a2a; color: #f8f8f2; padding:8px; margin-top:5px; border-radius:4px; font-size:12px; border: 1px solid #444;">ctx.fillRect(x, y, w, h);
+ctx.drawImage(sprite, x, y);</pre>
+      <strong>Game Use:</strong> Rendering sprites, backgrounds, and UI animations.
     `
   },
   {
-    name: "Keyboard Event Handlers",
+    name: "Keyboard Events (Input)",
     description: `
-      <p><strong>Key Down:</strong></p>
-      <pre style="background:#f0f0f0; padding:8px;">
-window.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowUp") player.jump();
-});
-      </pre>
-      <p><strong>Key Up:</strong></p>
-      <pre style="background:#f0f0f0; padding:8px;">
-window.addEventListener("keyup", (e) => {
-    player.stopMoving();
-});
-      </pre>
-      <p><strong>Use Case:</strong> Movement, attacks, menu navigation, pausing the game.</p>
+      <strong style="color: #8c00ff;">User Control:</strong> Listens for physical key presses.<br>
+      <pre style="background:#2a2a2a; color: #f8f8f2; padding:8px; margin-top:5px; border-radius:4px; font-size:12px; border: 1px solid #444;">window.addEventListener("keydown", (e) => {
+  if (e.key === " ") player.jump();
+});</pre>
+      <strong>Game Use:</strong> Movement, jumping, and menu navigation.
     `
   },
   {
-    name: "GameEnv Configuration",
+    name: "GameEnv Config (Input)",
     description: `
-      <p><strong>Example Config:</strong></p>
-      <pre style="background:#f0f0f0; padding:8px;">
-const gameEnv = new GameEnv({
-    width: 800,
-    height: 600,
-    gravity: 0.4,
-    debug: false
-});
-      </pre>
-      <p><strong>Use Case:</strong> Setting world size, physics, difficulty, assets, and global rules.</p>
-      <p>GameEnv acts as the input that defines how your entire game world behaves.</p>
+      <strong style="color: #8c00ff;">World Rules:</strong> Sets the global physics and environment.<br>
+      <pre style="background:#2a2a2a; color: #f8f8f2; padding:8px; margin-top:5px; border-radius:4px; font-size:12px; border: 1px solid #444;">const gameEnv = {
+  gravity: 0.4,
+  debug: false
+};</pre>
+      <strong>Game Use:</strong> Defining world size, gravity, and difficulty settings.
     `
   },
   {
-    name: "API Calls (Leaderboard / NPC AI)",
+    name: "API Calls (I/O)",
     description: `
-      <p><strong>Leaderboard Fetch:</strong></p>
-      <pre style="background:#f0f0f0; padding:8px;">
-fetch("/api/leaderboard")
+      <strong style="color: #8c00ff;">External Data:</strong> Communicates with servers.<br>
+      <pre style="background:#2a2a2a; color: #f8f8f2; padding:8px; margin-top:5px; border-radius:4px; font-size:12px; border: 1px solid #444;">fetch("/api/score")
   .then(res => res.json())
-  .then(data => updateLeaderboard(data));
-      </pre>
-
-      <p><strong>NPC AI Request:</strong></p>
-      <pre style="background:#f0f0f0; padding:8px;">
-fetch("/api/npc/behavior?id=pirate01")
-  .then(res => res.json())
-  .then(ai => npc.applyBehavior(ai));
-      </pre>
-
-      <p><strong>Use Case:</strong> Online scores, cloud saves, dynamic NPC behavior, remote configs.</p>
-      <p>API calls allow your game to communicate with servers and external systems.</p>
+  .then(data => show(data));</pre>
+      <strong>Game Use:</strong> Leaderboards, cloud saves, and dynamic AI behavior.
     `
   }
-];
+]; // Array properly closed
 
 // ----------------------
-// RENDER INTERACTIVE VIEWER
+// RENDER: Purple Neon Dark Mode
 // ----------------------
 const ioContainer = document.getElementById("io-list");
 
 ioCategories.forEach((item, index) => {
   const wrapper = document.createElement("div");
-  wrapper.style.marginBottom = "10px";
+  wrapper.style.marginBottom = "8px";
 
   const button = document.createElement("button");
   button.textContent = `${index + 1}. ${item.name}`;
-  button.style.width = "100%";
-  button.style.padding = "10px";
-  button.style.textAlign = "left";
-  button.style.cursor = "pointer";
-  button.style.border = "1px solid #8c00ff";
-  button.style.background = "#57197d";
-  button.style.fontSize = "16px";
+  button.style.cssText = `
+    width: 100%;
+    padding: 12px;
+    text-align: left;
+    cursor: pointer;
+    border: 1px solid #8c00ff;
+    border-radius: 4px;
+    background: #1a1a1a;
+    color: #8c00ff;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+  `;
 
   const details = document.createElement("div");
-  details.style.display = "none";
-  details.style.padding = "10px";
-  details.style.border = "1px solid #ddd";
-  details.style.borderTop = "none";
-  details.style.background = "#fff";
-  details.style.lineHeight = "1.6";
+  details.style.cssText = `
+    display: none;
+    padding: 15px;
+    border: 1px solid #333;
+    border-top: none;
+    background: #222222;
+    color: #dddddd;
+    font-size: 14px;
+    line-height: 1.5;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  `;
   details.innerHTML = item.description;
 
+  // Hover and Click Logic
+  button.onmouseover = () => {
+    button.style.background = "#57197d";
+    button.style.color = "white";
+  };
+  button.onmouseout = () => {
+    if (details.style.display !== "block") {
+      button.style.background = "#1a1a1a";
+      button.style.color = "#8c00ff";
+    }
+  };
+
   button.addEventListener("click", () => {
-    details.style.display = details.style.display === "none" ? "block" : "none";
+    const isOpen = details.style.display === "block";
+    details.style.display = isOpen ? "none" : "block";
+    button.style.borderRadius = isOpen ? "4px" : "4px 4px 0 0";
+    button.style.background = isOpen ? "#1a1a1a" : "#57197d";
+    button.style.color = isOpen ? "#8c00ff" : "white";
   });
 
   wrapper.appendChild(button);
   wrapper.appendChild(details);
   ioContainer.appendChild(wrapper);
-});
+}); // Loop properly closed
 </script>
 
 ---
