@@ -13,7 +13,7 @@ permalink: /controlStructures
 
 ---
 
-<div id="control-app" style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 650px; background: #1a1a1a; padding: 20px; border-radius: 8px; border: 1px solid #333; color: #e0e0e0;">
+<div id="control-app" style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 650px; background: #222222 padding: 20px; border-radius: 8px; border: 1px solid #333; color: #e0e0e0;">
   <h2 style="margin-top: 0; color: #00ddff;">Control Structures</h2>
   <p style="color: #bbbbbb;">Click a category to see examples and game use cases.</p>
 
@@ -85,7 +85,7 @@ controlStructures.forEach((item, index) => {
   details.style.padding = "10px";
   details.style.border = "1px solid #ddd";
   details.style.borderTop = "none";
-  details.style.background = "#fff";
+  details.style.background = "#222222";
   details.style.lineHeight = "1.6";
   details.innerHTML = item.description;
 

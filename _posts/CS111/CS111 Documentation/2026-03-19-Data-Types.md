@@ -85,7 +85,7 @@ dataTypes.forEach((item, index) => {
   details.style.padding = "10px";
   details.style.border = "1px solid #ddd";
   details.style.borderTop = "none";
-  details.style.background = "#fff";
+  details.style.background = "#222222";
   details.style.lineHeight = "1.6";
 
   details.innerHTML = `
